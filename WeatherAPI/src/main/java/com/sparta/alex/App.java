@@ -1,6 +1,6 @@
 package com.sparta.alex;
 
-import com.sparta.alex.controller.WeatherDTO;
+import com.sparta.alex.controller.LocationManager;
 import com.sparta.alex.view.UserInterface;
 
 /**
@@ -11,6 +11,6 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println(WeatherDTO.processLocation(UserInterface.getLocation()));
+        System.out.println(LocationManager.processLocation(UserInterface.getLocation()));
     }
 }
