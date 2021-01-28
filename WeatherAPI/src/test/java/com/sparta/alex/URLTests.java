@@ -22,7 +22,6 @@ public class URLTests {
 	@Test
 	@DisplayName("URL builder test")
 	void urlBuilderTest() {
-
 		Assertions.assertEquals("https://www.metaweather.com/api/location/search/?query=london",
 				URLBuilder.buildLocationSearchURL(URLBuilder.processLocation("london")));
 	}
