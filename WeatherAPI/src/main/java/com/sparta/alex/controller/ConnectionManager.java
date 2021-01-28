@@ -16,12 +16,20 @@ public class ConnectionManager {
 	public void connectToApi(String url){
 		try {
 			httpClient = HttpClient.newHttpClient();
-			httpRequest = HttpRequest.newBuilder().uri(new URI(url)).build();
+			httpRequest = HttpRequest.newBuilder().uri(URI.create(url)).build();
 			httpResponse = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public int getStatusCode(){
+		return httpResponse.statusCode();
+	}
+
+	public String getJsonBody(){
+		return httpResponse.body().toString();
 	}
 
 }
