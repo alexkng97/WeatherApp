@@ -29,4 +29,16 @@ public class InjectorTest {
 		Assertions.assertEquals("London", location[0].getTitle());
 
 	}
+
+
+	@Test
+	@DisplayName("Multiple locations returned")
+	void multipleLocationsReturned() {
+		url = URLBuilder.buildLocationSearchURL("san");
+		connectionManager.connectToApi(url);
+
+		LocationDTO[] locations = Injector.injectIntoLocationSearch(connectionManager.getJsonBody());
+		Assertions.assertEquals(11,locations.length);
+
+	}
 }
