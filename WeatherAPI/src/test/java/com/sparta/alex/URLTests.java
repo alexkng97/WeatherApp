@@ -25,4 +25,10 @@ public class URLTests {
 		Assertions.assertEquals("https://www.metaweather.com/api/location/search/?query=london",
 				URLBuilder.buildLocationSearchURL(URLBuilder.processLocation("london")));
 	}
+
+	@Test
+	@DisplayName("builds location url")
+	void buildsLocationUrl() {
+		Assertions.assertEquals("https://www.metaweather.com/api/location/44418/", URLBuilder.buildLocationURL(44418));
+	}
 }

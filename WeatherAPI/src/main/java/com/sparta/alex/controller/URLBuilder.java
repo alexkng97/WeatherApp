@@ -12,8 +12,10 @@ public class URLBuilder {
 	}
 
 	public static String buildLocationSearchURL(String location){
-		StringBuilder sb = new StringBuilder();
-		sb.append(BASE_URL).append("search/?query=").append(location);
-		return sb.toString();
+		return BASE_URL + "search/?query=" + location;
+	}
+
+	public static String buildLocationURL(int woeid){
+		return BASE_URL + woeid + "/";
 	}
 }

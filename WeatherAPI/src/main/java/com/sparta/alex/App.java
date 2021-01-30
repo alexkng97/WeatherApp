@@ -11,6 +11,8 @@ public class App
 {
     public static void main (String[] args)
     {
+        //TODO: structure just for initial => put this in another method
+
         String locationEntered = URLBuilder.processLocation(UserInterface.getLocation());
         String searchURL = URLBuilder.buildLocationSearchURL(locationEntered);
 
@@ -25,6 +27,12 @@ public class App
         }else{
             selectedLocation = locations[0];
         }
+
+        String weatherFromLocation = URLBuilder.buildLocationURL(selectedLocation.getWoeid());
+        connectionManager.connectToApi(weatherFromLocation);
+
+        System.out.println(connectionManager.getJsonBody());
+
 
     }
 }
