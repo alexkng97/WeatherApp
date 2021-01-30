@@ -4,6 +4,7 @@ import com.sparta.alex.controller.ConnectionManager;
 import com.sparta.alex.controller.Injector;
 import com.sparta.alex.controller.URLBuilder;
 import com.sparta.alex.model.LocationDTO;
+import com.sparta.alex.model.WeatherDTO;
 import com.sparta.alex.view.UserInterface;
 
 
@@ -31,7 +32,10 @@ public class App
         String weatherFromLocation = URLBuilder.buildLocationURL(selectedLocation.getWoeid());
         connectionManager.connectToApi(weatherFromLocation);
 
-        System.out.println(connectionManager.getJsonBody());
+        //System.out.println(connectionManager.getJsonBody());
+        WeatherDTO weatherDTO = Injector.injectIntoWeather(connectionManager.getJsonBody());
+        System.out.println(weatherDTO.getTitle());
+
 
 
     }

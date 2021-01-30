@@ -15,7 +15,7 @@ public class UserInterface {
 
 	public static int chooseLocation(LocationDTO[] locations) {
 		System.out.printf("There are %d locations returned from your search. \n", locations.length);
-		System.out.println("Please choose the location you want: ");
+		System.out.println("Please choose the location you want:");
 
 		for (int i = 0; i < locations.length; i++) {
 			System.out.printf("[%d] %s \n", (i + 1), locations[i].getTitle());
