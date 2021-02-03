@@ -22,6 +22,7 @@ public class App
 
         LocationDTO[] locations = Injector.injectIntoLocationSearch(connectionManager.getJsonBody());
         LocationDTO selectedLocation;
+
         if(locations.length > 1){
             int index = UserInterface.chooseLocation(locations);
             selectedLocation = locations[index];
@@ -32,9 +33,9 @@ public class App
         String weatherFromLocation = URLBuilder.buildLocationURL(selectedLocation.getWoeid());
         connectionManager.connectToApi(weatherFromLocation);
 
-        //System.out.println(connectionManager.getJsonBody());
         WeatherDTO weatherDTO = Injector.injectIntoWeather(connectionManager.getJsonBody());
-        System.out.println(weatherDTO.getTitle());
+
+        UserInterface.chooseWeatherOption(weatherDTO);
 
 
 
