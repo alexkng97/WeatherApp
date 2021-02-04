@@ -21,11 +21,13 @@ public class App
         connectionManager.connectToApi(searchURL);
 
         LocationDTO[] locations = Injector.injectIntoLocationSearch(connectionManager.getJsonBody());
-        LocationDTO selectedLocation;
+        LocationDTO selectedLocation = null;
 
         if(locations.length > 1){
             int index = UserInterface.chooseLocation(locations);
             selectedLocation = locations[index];
+        }else if(locations.length == 0) {
+            System.out.println("Location not found!");
         }else{
             selectedLocation = locations[0];
         }

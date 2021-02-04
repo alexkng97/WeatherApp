@@ -33,7 +33,7 @@ public class UserInterface {
 		System.out.println("\nWould you like to view the weather for:");
 		System.out.println("[1] Today");
 		System.out.println("[2] Tomorrow");
-		System.out.println("[3] The next 5 days");
+		System.out.println("[3] Today and the next 5 days");
 
 		Scanner scanner = new Scanner(System.in);
 		int option = scanner.nextInt();
@@ -43,6 +43,9 @@ public class UserInterface {
 				break;
 			case 2:
 				printTomorrowsWeather(weatherDTO);
+				break;
+			case 3:
+				printNextFiveDays(weatherDTO);
 				break;
 
 			default:
@@ -78,6 +81,18 @@ public class UserInterface {
 		System.out.println("\t" +weather.get("predictability") + "% chance of " + weather.get("weather_state_name"));
 		System.out.println("\tLows of " + (int) Double.parseDouble(weather.get("min_temp")) + "C and highs of "
 				+ (int) Double.parseDouble(weather.get("max_temp")) + "C");
+
+	}
+
+	public static void printNextFiveDays(WeatherDTO weatherDTO){
+		for(HashMap<String,String> weather : weatherDTO.getConsolidated_weather()){
+			System.out.println("\n---------------------------------------------------");
+			System.out.println(convertDate(weather.get("applicable_date")));
+			System.out.println("\t" +weather.get("predictability") + "% chance of " + weather.get("weather_state_name"));
+			System.out.println("\tLows of " + (int) Double.parseDouble(weather.get("min_temp")) + "C and highs of "
+					+ (int) Double.parseDouble(weather.get("max_temp")) + "C");
+
+		}
 
 	}
 
